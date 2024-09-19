@@ -1,101 +1,75 @@
-import Image from "next/image";
+// pages/index.jsx
+'use client';
+import Navbar from './Components/Navbar';
+import { motion } from 'framer-motion';
+import Head from 'next/head'; // For additional styles if needed
 
-export default function Home() {
+const Home = () => {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              app/page.js
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
+    <>
+      <Head>
+        <title>Welcome Page</title>
+        <meta name="description" content="Welcome to our site!" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+      <Navbar />
+      <div className="relative min-h-screen bg-black overflow-hidden flex items-center justify-center">
+        <motion.div
+          className="absolute top-0 left-0 w-full h-full"
+          animate={{ opacity: [0.5, 1, 0.5] }}
+          transition={{ duration: 10, repeat: Infinity }}
         >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
+          <div className="absolute inset-0 bg-black" />
+        </motion.div>
+        <motion.div
+          className="relative flex flex-col items-center justify-center text-center text-white z-10 px-4 sm:px-8 lg:px-16"
+          initial={{ opacity: 0, y: 50, scale: 1.5 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          transition={{ duration: 3, ease: "easeInOut" }}
         >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+          <h1 className="text-4xl sm:text-6xl lg:text-7xl font-bold">Krish.</h1>
+          <p className="text-lg sm:text-xl lg:text-2xl mt-4">Startup, Second Opportunity, For Everyone!</p>
+        </motion.div>
+        <ChineseCharacters />
+      </div>
+    </>
   );
-}
+};
+
+
+const ChineseCharacters = () => {
+  return (
+    <>
+      <motion.div
+        className="absolute bottom-1/2 right-0 transform -translate-x-1/2 translate-y-1/2 px-4"
+        animate={{ y: [0, 20, 0] }}
+        transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+      >
+        <p className="text-4xl font-bold text-white">欢</p>
+        <p className="text-4xl font-bold text-white">迎</p>
+        <p className="text-4xl font-bold text-white">你</p>
+        <p className="text-4xl font-bold text-white">来</p>
+        <p className="text-4xl font-bold text-white">到</p>
+        <p className="text-4xl font-bold text-white">这</p>
+        <p className="text-4xl font-bold text-white">里</p>
+      </motion.div>
+      
+      <motion.div
+        className="absolute top-1/2 left-0 transform translate-x-1/2 -translate-y-1/2 px-4"
+        animate={{ y: [0, -20, 0] }}
+        transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+      >
+        <p className="text-4xl font-bold text-white">欢</p>
+        <p className="text-4xl font-bold text-white">迎</p>
+        <p className="text-4xl font-bold text-white">你</p>
+        <p className="text-4xl font-bold text-white">来</p>
+        <p className="text-4xl font-bold text-white">到</p>
+        <p className="text-4xl font-bold text-white">这</p>
+        <p className="text-4xl font-bold text-white">里</p>
+      </motion.div>
+    </>
+  );
+};
+
+
+export default Home;
