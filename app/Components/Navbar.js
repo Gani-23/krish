@@ -35,7 +35,7 @@ const Navbar = () => {
                 style={{ scaleX: hoveredItem === item ? 1 : 0 }}
                 initial={{ scaleX: 0 }}
                 animate={{ scaleX: hoveredItem === item ? 1 : 0 }}
-                originX={0}
+                transformOrigin="left" 
               />
             </motion.div>
           ))}

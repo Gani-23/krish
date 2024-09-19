@@ -134,21 +134,21 @@ const services = [
     id: 1,
     title: 'Consulting',
     description: 'Expert advice to help you navigate complex challenges.',
-    icon: '/images/consulting-icon.png', // Replace with actual icon path
+    icon: '/images/consult.png', // Replace with actual icon path
     delay: 0.1
   },
   {
     id: 2,
     title: 'Development',
     description: 'Custom development solutions tailored to your needs.',
-    icon: '/images/development-icon.png', // Replace with actual icon path
+    icon: '/images/developer.png', // Replace with actual icon path
     delay: 0.2
   },
   {
     id: 3,
     title: 'Design',
     description: 'Creative design services to make your brand stand out.',
-    icon: '/images/design-icon.png', // Replace with actual icon path
+    icon: '/images/designer.png', // Replace with actual icon path
     delay: 0.3
   }
 ];
@@ -159,21 +159,21 @@ const features = [
     id: 1,
     title: 'Innovative Solutions',
     description: 'Cutting-edge technologies to stay ahead of the competition.',
-    icon: '/images/innovation-icon.png', // Replace with actual icon path
+    icon: '/images/innovation.png', // Replace with actual icon path
     delay: 0.1
   },
   {
     id: 2,
     title: 'Customer Support',
     description: 'Dedicated support to assist you at every step.',
-    icon: '/images/support-icon.png', // Replace with actual icon path
+    icon: '/images/customer.png', // Replace with actual icon path
     delay: 0.2
   },
   {
     id: 3,
     title: 'Quality Assurance',
     description: 'Rigorous testing to ensure top-notch quality.',
-    icon: '/images/quality-icon.png', // Replace with actual icon path
+    icon: '/images/Quality.png', // Replace with actual icon path
     delay: 0.3
   },
   {
