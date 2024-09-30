@@ -22,7 +22,7 @@ const ContactUs = () => {
       </div> */}
       <Navbar />
 
-      <div className="relative z-10 container mx-auto px-6 py-16 flex flex-col items-center">
+      <div className="relative z-10 container mx-auto px-6 py-20 flex flex-col items-center">
         {/* Hero Section */}
         <motion.div
           className="text-center mb-12"
@@ -90,38 +90,35 @@ const ContactUs = () => {
 
         {/* Contact Information */}
         <motion.div
-          className="mt-12 text-center"
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, ease: "easeInOut" }}
-        >
-          <h2 className="text-3xl md:text-4xl font-extrabold mb-6">Our Office</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
-            <div className="bg-gray-800 p-6 rounded-lg shadow-xl hover:shadow-2xl transition-shadow duration-300 flex items-start space-x-4">
-              <FaMapMarkerAlt className="text-blue-500 text-3xl" />
-              <div>
-                <h3 className="text-xl font-semibold mb-2">Address</h3>
-                <p className="text-lg">123 Business Rd, Suite 456</p>
-                <p className="text-lg">City, Country 78901</p>
-              </div>
-            </div>
-            <div className="bg-gray-800 p-6 rounded-lg shadow-xl hover:shadow-2xl transition-shadow duration-300 flex items-start space-x-4">
-              <FaPhoneAlt className="text-blue-500 text-3xl" />
-              <div>
-                <h3 className="text-xl font-semibold mb-2">Phone</h3>
-                <p className="text-lg">+1 (123) 456-7890</p>
-              </div>
-            </div>
-            <div className="bg-gray-800 p-6 rounded-lg shadow-xl hover:shadow-2xl transition-shadow duration-300 flex items-start space-x-4">
-              <FaEnvelope className="text-blue-500 text-3xl" />
-              <div>
-                <h3 className="text-xl font-semibold mb-2">Email</h3>
-                <p className="text-lg">contact@yourdomain.com</p>
-              </div>
-            </div>
-          </div>
-         
-        </motion.div>
+  className="mt-12 text-center"
+  initial={{ opacity: 0, y: 50 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ duration: 1, ease: "easeInOut" }}
+>
+  <h2 className="text-3xl md:text-4xl font-extrabold mb-8">Our Office</h2>
+  <div className="flex flex-col md:flex-row justify-center items-stretch gap-8 max-w-5xl mx-auto">
+    <div className="bg-gray-900 p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col items-start space-y-4 transform hover:scale-105">
+      <FaMapMarkerAlt className="text-blue-500 text-4xl" />
+      <h3 className="text-xl font-semibold">Address</h3>
+      <p className="text-lg">123 Business Rd, Suite 456</p>
+      <p className="text-lg">City, Country 78901</p>
+      <Link href="/location" className="mt-4 text-blue-500 hover:underline">View on Map</Link>
+    </div>
+    <div className="bg-gray-900 p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col items-start space-y-4 transform hover:scale-105">
+      <FaPhoneAlt className="text-blue-500 text-4xl" />
+      <h3 className="text-xl font-semibold">Phone</h3>
+      <p className="text-lg">+91 (9182) 34-5999</p>
+      <Link href="tel:+11234567890" className="mt-4 text-blue-500 hover:underline">Call Us</Link>
+    </div>
+    <div className="bg-gray-900 p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col items-start space-y-4 transform hover:scale-105">
+      <FaEnvelope className="text-blue-500 text-4xl" />
+      <h3 className="text-xl font-semibold">Email</h3>
+      <p className="text-lg">saiganesh7989@gmail.com</p>
+      <Link href="mailto:contact@yourdomain.com" className="mt-4 text-blue-500 hover:underline">Send an Email</Link>
+    </div>
+  </div>
+</motion.div>
+
       </div>
     </section>
   );

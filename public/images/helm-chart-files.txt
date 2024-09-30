@@ -1,0 +1,202 @@
+# Chart.yaml
+apiVersion: v2
+name: microservices
+description: A Helm chart for Kubernetes microservices
+type: application
+version: 0.1.0
+appVersion: "1.0.0"
+
+# Define dependencies if you have any subchart
+dependencies:
+  - name: mongodb
+    version: 13.x.x
+    repository: https://charts.bitnami.com/bitnami
+    condition: mongodb.enabled
+
+# values.yaml
+# Global values
+global:
+  namespace: default
+
+# Frontend service
+frontend:
+  replicaCount: 1
+  image:
+    repository: your-frontend-image
+    tag: latest
+  service:
+    type: ClusterIP
+    port: 80
+
+# Hello service
+helloservice:
+  replicaCount: 1
+  image:
+    repository: your-hello-service-image
+    tag: latest
+  service:
+    type: ClusterIP
+    port: 8080
+
+# Profile service
+profileservice:
+  replicaCount: 1
+  image:
+    repository: your-profile-service-image
+    tag: latest
+  service:
+    type: ClusterIP
+    port: 8080
+
+# MongoDB configuration
+mongodb:
+  enabled: true
+  auth:
+    rootPassword: your-root-password
+  persistence:
+    enabled: true
+    storageClass: "standard"
+    size: 8Gi
+
+# templates/frontend/deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name }}-frontend
+  namespace: {{ .Values.global.namespace }}
+spec:
+  replicas: {{ .Values.frontend.replicaCount }}
+  selector:
+    matchLabels:
+      app: frontend
+  template:
+    metadata:
+      labels:
+        app: frontend
+    spec:
+      containers:
+      - name: frontend
+        image: "{{ .Values.frontend.image.repository }}:{{ .Values.frontend.image.tag }}"
+        ports:
+        - containerPort: 80
+
+# templates/frontend/service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Release.Name }}-frontend
+  namespace: {{ .Values.global.namespace }}
+spec:
+  type: {{ .Values.frontend.service.type }}
+  ports:
+    - port: {{ .Values.frontend.service.port }}
+      targetPort: 80
+  selector:
+    app: frontend
+
+# templates/helloservice/deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name }}-helloservice
+  namespace: {{ .Values.global.namespace }}
+spec:
+  replicas: {{ .Values.helloservice.replicaCount }}
+  selector:
+    matchLabels:
+      app: helloservice
+  template:
+    metadata:
+      labels:
+        app: helloservice
+    spec:
+      containers:
+      - name: helloservice
+        image: "{{ .Values.helloservice.image.repository }}:{{ .Values.helloservice.image.tag }}"
+        ports:
+        - containerPort: 8080
+
+# templates/helloservice/service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Release.Name }}-helloservice
+  namespace: {{ .Values.global.namespace }}
+spec:
+  type: {{ .Values.helloservice.service.type }}
+  ports:
+    - port: {{ .Values.helloservice.service.port }}
+      targetPort: 8080
+  selector:
+    app: helloservice
+
+# templates/profileservice/deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name }}-profileservice
+  namespace: {{ .Values.global.namespace }}
+spec:
+  replicas: {{ .Values.profileservice.replicaCount }}
+  selector:
+    matchLabels:
+      app: profileservice
+  template:
+    metadata:
+      labels:
+        app: profileservice
+    spec:
+      containers:
+      - name: profileservice
+        image: "{{ .Values.profileservice.image.repository }}:{{ .Values.profileservice.image.tag }}"
+        ports:
+        - containerPort: 8080
+
+# templates/profileservice/service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Release.Name }}-profileservice
+  namespace: {{ .Values.global.namespace }}
+spec:
+  type: {{ .Values.profileservice.service.type }}
+  ports:
+    - port: {{ .Values.profileservice.service.port }}
+      targetPort: 8080
+  selector:
+    app: profileservice
+
+# templates/databaseMongoDB/pv.yaml
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: {{ .Release.Name }}-mongodb-pv
+  namespace: {{ .Values.global.namespace }}
+spec:
+  capacity:
+    storage: {{ .Values.mongodb.persistence.size }}
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: {{ .Values.mongodb.persistence.storageClass }}
+  # Add other necessary specifications based on your storage system
+
+# templates/databaseMongoDB/pvc.yaml
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: {{ .Release.Name }}-mongodb-pvc
+  namespace: {{ .Values.global.namespace }}
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: {{ .Values.mongodb.persistence.size }}
+  storageClassName: {{ .Values.mongodb.persistence.storageClass }}
+
+# templates/databaseMongoDB/namespace.yaml
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: {{ .Values.global.namespace }}

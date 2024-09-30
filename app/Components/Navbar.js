@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
+import Image from 'next/image';
 
 const Navbar = () => {
   const [hoveredItem, setHoveredItem] = useState(null);
@@ -15,7 +16,9 @@ const Navbar = () => {
           whileHover={{ scale: 1.1 }}
           transition={{ type: 'spring', stiffness: 300 }}
         >
-          <Link href="/">Logo</Link>
+          <Link href="/">
+          <Image src="/images/logo.png" alt="logo" width={150} height={100} />
+          </Link>
         </motion.div>
         <div className="hidden md:flex space-x-6">
           {['Home', 'About', 'Services', 'Contact'].map((item) => (
