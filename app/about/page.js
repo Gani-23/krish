@@ -100,21 +100,21 @@ const About = () => {
 const teamMembers = [
   {
     id: 1,
-    name: 'Alice Johnson',
+    name: 'Saiganesh Angadi',
     position: 'CEO',
-    image: '/images/alice.jpg', // Replace with actual image path
+    image: '/images/founders/gani.png', // Replace with actual image path
     delay: 0.1
   },
   {
     id: 2,
-    name: 'Bob Smith',
+    name: 'Karegowdra Gopi Krishna',
     position: 'CTO',
     image: '/images/bob.jpg', // Replace with actual image path
     delay: 0.2
   },
   {
     id: 3,
-    name: 'Charlie Brown',
+    name: 'Sunil Naik',
     position: 'CFO',
     image: '/images/charlie.jpg', // Replace with actual image path
     delay: 0.3

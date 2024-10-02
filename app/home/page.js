@@ -1,15 +1,22 @@
-// app/page.tsx
 'use client';
 
-import { useRef } from 'react';
+import { useRef, useEffect } from 'react';
 import { motion, useAnimation } from 'framer-motion';
-import { Canvas } from '@react-three/fiber';
+import { Canvas, useFrame } from '@react-three/fiber';
 import { OrbitControls, Loader, useGLTF } from '@react-three/drei';
-import { useEffect } from 'react';
+import Navbar from '../Components/Navbar';
 
 // Component for 3D object
 const Model = () => {
-  const { scene } = useGLTF('/Models/librarians_room.glb'); // Ensure the path is correct
+  const { scene } = useGLTF('/Models/boat.glb'); // Ensure the path is correct
+  // Scale the model down
+  scene.scale.set(0.5, 0.5, 0.5); // Adjust the scale factor as needed
+
+  // Animation for rotation
+  useFrame(() => {
+    scene.rotation.y += 0.0005; // Rotate the model slowly
+  });
+
   return <primitive object={scene} />;
 };
 
@@ -30,34 +37,39 @@ const HomePage = () => {
   }, [controlsAnimation]);
 
   return (
+    <>
+    <div className='pz-10'>
+    <Navbar/>
     <div className="relative h-screen bg-black text-white overflow-hidden">
       {/* 3D Scene */}
       <div className="absolute top-0 left-0 w-full h-full">
-        <Canvas>
+        <Canvas camera={{ position: [20, 30, 15], fov: 25 }}> {/* Adjust camera position and FOV */}
           <ambientLight intensity={0.5} />
-          <pointLight position={[10, 10, 10]} />
+          <pointLight position={[10, 5, 10]} />
           <Model />
           <OrbitControls ref={controlsRef} />
         </Canvas>
       </div>
       
       {/* Main Content */}
-      <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-6">
+      <div className="relative z-10 flex flex-col items-center justify-center h-full text-center">
         <motion.h1
           className="text-5xl font-bold mb-4"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1 }}
         >
-          Welcome to My Sleek Homepage
+          Dare to leap! 
         </motion.h1>
+
+        
         <motion.p
           className="text-lg"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 0.5 }}
         >
-          Scroll down to see more amazing content.
+          Join us for exciting journey for an adventure.
         </motion.p>
       </div>
 
@@ -82,6 +94,8 @@ const HomePage = () => {
       {/* Loader for GLB model */}
       <Loader />
     </div>
+    </div>
+    </>
   );
 };
 
