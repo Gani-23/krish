@@ -3,6 +3,7 @@
 import Navbar from './Components/Navbar';
 import { motion } from 'framer-motion';
 import Head from 'next/head'; // For additional styles if needed
+import HomeContent from './Components/HomeContent';
 
 const Home = () => {
   return (
@@ -31,7 +32,9 @@ const Home = () => {
           <p className="text-lg sm:text-xl lg:text-2xl mt-4">Startup, Second Opportunity, For Everyone!</p>
         </motion.div>
         <ChineseCharacters />
+      
       </div>
+    
     </>
   );
 };

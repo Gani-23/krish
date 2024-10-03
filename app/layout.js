@@ -13,7 +13,7 @@ const geistMono = localFont({
 });
 
 export const metadata = {
-  title: "Kirk.io",
+  title: "Krish.io",
   description: "A Startup, Second chances, For Everyone!",
 };
 

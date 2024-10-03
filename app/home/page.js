@@ -5,6 +5,7 @@ import { motion, useAnimation } from 'framer-motion';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { OrbitControls, Loader, useGLTF } from '@react-three/drei';
 import Navbar from '../Components/Navbar';
+import HomeContent from '../Components/HomeContent';
 
 // Component for 3D object
 const Model = () => {
@@ -38,7 +39,7 @@ const HomePage = () => {
 
   return (
     <>
-    <div className='pz-10'>
+    <div>
     <Navbar/>
     <div className="relative h-screen bg-black text-white overflow-hidden">
       {/* 3D Scene */}
@@ -81,6 +82,8 @@ const HomePage = () => {
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 1 }}
         >
+
+          
           <div className="text-center">
             <h2 className="text-2xl font-bold mb-4">More Content</h2>
             <p>
@@ -93,6 +96,8 @@ const HomePage = () => {
 
       {/* Loader for GLB model */}
       <Loader />
+
+      
     </div>
     </div>
     </>
