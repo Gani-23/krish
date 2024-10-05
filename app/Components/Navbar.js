@@ -16,12 +16,18 @@ const Navbar = () => {
     <nav className="fixed top-0 left-0 w-full bg-black shadow-lg z-50">
       <div className="container mx-auto px-6 py-4 flex items-center justify-between">
         <motion.div
-          className="text-white text-2xl font-bold"
+          className="text-white font-bold"
           whileHover={{ scale: 1.1 }}
           transition={{ type: 'spring', stiffness: 300 }}
         >
           <Link href="/">
-            <Image src="/images/logo.png" alt="logo" width={150} height={100} />
+            <Image 
+              src="/images/logo.png" 
+              alt="logo" 
+              width={150} // default width for large screens
+              height={100} // default height for large screens
+              className="w-24 h-auto sm:w-32 md:w-40 lg:w-48" // Responsive sizes for different screens
+            />
           </Link>
         </motion.div>
 

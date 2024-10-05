@@ -1,4 +1,3 @@
-// pages/index.jsx
 'use client';
 import Navbar from './Components/Navbar';
 import { motion } from 'framer-motion';
@@ -11,7 +10,7 @@ const Home = () => {
       <Head>
         <title>Welcome Page</title>
         <meta name="description" content="Welcome to our site!" />
-        <link rel="icon" href="/public/images/favicons.ico" />
+        <link rel="icon" href="/favicon.ico" />
       </Head>
       <Navbar />
       <div className="relative min-h-screen bg-black overflow-hidden flex items-center justify-center">
@@ -32,47 +31,45 @@ const Home = () => {
           <p className="text-lg sm:text-xl lg:text-2xl mt-4">Startup, Second Opportunity, For Everyone!</p>
         </motion.div>
         <ChineseCharacters />
-      
       </div>
-    
     </>
   );
 };
-
 
 const ChineseCharacters = () => {
   return (
     <>
+      {/* Floating characters on the right */}
       <motion.div
-        className="absolute bottom-1/2 right-0 transform -translate-x-1/2 translate-y-1/2 px-4"
+        className="absolute bottom-1/2 right-0 transform translate-x-1/2 translate-y-1/2 px-2 sm:px-4"
         animate={{ y: [0, 20, 0] }}
         transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
       >
-        <p className="text-4xl font-bold text-white">欢</p>
-        <p className="text-4xl font-bold text-white">迎</p>
-        <p className="text-4xl font-bold text-white">你</p>
-        <p className="text-4xl font-bold text-white">来</p>
-        <p className="text-4xl font-bold text-white">到</p>
-        <p className="text-4xl font-bold text-white">这</p>
-        <p className="text-4xl font-bold text-white">里</p>
+        <p className="text-2xl sm:text-4xl font-bold text-white">欢</p>
+        <p className="text-2xl sm:text-4xl font-bold text-white">迎</p>
+        <p className="text-2xl sm:text-4xl font-bold text-white">你</p>
+        <p className="text-2xl sm:text-4xl font-bold text-white">来</p>
+        <p className="text-2xl sm:text-4xl font-bold text-white">到</p>
+        <p className="text-2xl sm:text-4xl font-bold text-white">这</p>
+        <p className="text-2xl sm:text-4xl font-bold text-white">里</p>
       </motion.div>
-      
+
+      {/* Floating characters on the left */}
       <motion.div
-        className="absolute top-1/2 left-0 transform translate-x-1/2 -translate-y-1/2 px-4"
+        className="absolute top-1/2 left-0 transform -translate-x-1/2 -translate-y-1/2 px-2 sm:px-4"
         animate={{ y: [0, -20, 0] }}
         transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
       >
-        <p className="text-4xl font-bold text-white">欢</p>
-        <p className="text-4xl font-bold text-white">迎</p>
-        <p className="text-4xl font-bold text-white">你</p>
-        <p className="text-4xl font-bold text-white">来</p>
-        <p className="text-4xl font-bold text-white">到</p>
-        <p className="text-4xl font-bold text-white">这</p>
-        <p className="text-4xl font-bold text-white">里</p>
+        <p className="text-2xl sm:text-4xl font-bold text-white">欢</p>
+        <p className="text-2xl sm:text-4xl font-bold text-white">迎</p>
+        <p className="text-2xl sm:text-4xl font-bold text-white">你</p>
+        <p className="text-2xl sm:text-4xl font-bold text-white">来</p>
+        <p className="text-2xl sm:text-4xl font-bold text-white">到</p>
+        <p className="text-2xl sm:text-4xl font-bold text-white">这</p>
+        <p className="text-2xl sm:text-4xl font-bold text-white">里</p>
       </motion.div>
     </>
   );
 };
-
 
 export default Home;
