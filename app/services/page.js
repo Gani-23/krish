@@ -10,17 +10,7 @@ const Services = () => {
     <>
       <Navbar />
       <section className="relative bg-black text-white overflow-hidden pt-20">
-        <div className="absolute inset-0">
-          <Image
-            src="/images/services-bg.jpg"
-            alt="Services Background"
-            layout="fill"
-            objectFit="cover"
-            quality={100}
-            className="opacity-50"
-            priority
-          />
-        </div>
+
         <div className="relative z-10 flex flex-col items-center justify-center min-h-screen text-center px-6 py-12">
           <motion.div
             initial={{ opacity: 0, y: -50 }}
