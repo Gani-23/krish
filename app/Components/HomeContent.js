@@ -5,10 +5,7 @@ const HomeContent = () => {
   return (
     <div className="flex flex-col items-center justify-center space-y-10 p-6 bg-black text-white">
       <h1 className="text-4xl font-bold mb-4 relative">
-        <span className="absolute inset-0 bg-gradient-to-r from-purple-500 to-blue-500 opacity-75 rounded-lg" />
-        <span className="relative text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-blue-500">
           Our Expertise
-        </span>
       </h1>
 
       {/* First Section: Photo on the left and content on the right */}

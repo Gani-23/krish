@@ -28,9 +28,12 @@ const Services = () => {
             transition={{ duration: 1, ease: "easeInOut" }}
             className="max-w-3xl"
           >
-            <h1 className="text-5xl md:text-6xl font-bold mb-4 text-gradient">Our Services</h1>
+            <h1 className="text-5xl md:text-6xl font-bold mb-4 text-gradient">
+              Our Services
+            </h1>
             <p className="text-lg md:text-xl mb-6">
-              Discover how we can help you achieve your goals with our expert services.
+              Discover how we can help you achieve your goals with our expert
+              services.
             </p>
             <Link href="/contact">
               <span className="inline-block px-8 py-4 text-lg font-semibold bg-white text-black rounded-lg shadow-lg hover:bg-gray-200 transition duration-300">
@@ -44,7 +47,9 @@ const Services = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.5 }}
             className="mt-6 cursor-pointer flex items-center"
-            onClick={() => window.scrollTo({ top: window.innerHeight, behavior: "smooth" })}
+            onClick={() =>
+              window.scrollTo({ top: window.innerHeight, behavior: "smooth" })
+            }
             aria-label="Scroll Down"
           >
             <Image
@@ -69,9 +74,12 @@ const Services = () => {
             transition={{ duration: 1, ease: "easeInOut" }}
             className="max-w-2xl mx-auto mb-12"
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gradient">Why Choose Us?</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gradient">
+              Why Choose Us?
+            </h2>
             <p className="text-lg mb-6">
-              Our commitment to excellence and customer satisfaction sets us apart from the competition.
+              Our commitment to excellence and customer satisfaction sets us
+              apart from the competition.
             </p>
           </motion.div>
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8 px-4">
