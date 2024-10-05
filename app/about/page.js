@@ -62,7 +62,7 @@ const About = () => {
                     alt={member.name}
                     width={150}
                     height={150}
-                    className="rounded-full mx-auto mb-4"
+                    className="rounded-full mx-auto mb-4 filter grayscale"
                   />
                   <h3 className="text-xl font-semibold mb-2 text-black">{member.name}</h3>
                   <p className="text-gray-700">{member.position}</p>
@@ -117,7 +117,7 @@ const teamMembers = [
     id: 3,
     name: 'Sunil Naik',
     position: 'CFO',
-    image: '/images/charlie.jpg', // Replace with actual image path
+    image: '/images/founders/sunil.png', // Replace with actual image path
     delay: 0.3
   }
 ];

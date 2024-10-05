@@ -11,7 +11,7 @@ const Home = () => {
       <Head>
         <title>Welcome Page</title>
         <meta name="description" content="Welcome to our site!" />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/public/images/favicons.ico" />
       </Head>
       <Navbar />
       <div className="relative min-h-screen bg-black overflow-hidden flex items-center justify-center">
