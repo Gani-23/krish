@@ -1,4 +1,3 @@
-// components/Navbar.jsx
 'use client';
 import { useState } from 'react';
 import { motion } from 'framer-motion';
@@ -7,6 +6,11 @@ import Image from 'next/image';
 
 const Navbar = () => {
   const [hoveredItem, setHoveredItem] = useState(null);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false); // state to track mobile menu visibility
+
+  const handleMobileMenuToggle = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen); // toggle mobile menu visibility
+  };
 
   return (
     <nav className="fixed top-0 left-0 w-full bg-black shadow-lg z-50">
@@ -17,9 +21,11 @@ const Navbar = () => {
           transition={{ type: 'spring', stiffness: 300 }}
         >
           <Link href="/">
-          <Image src="/images/logo.png" alt="logo" width={150} height={100} />
+            <Image src="/images/logo.png" alt="logo" width={150} height={100} />
           </Link>
         </motion.div>
+
+        {/* Desktop Menu */}
         <div className="hidden md:flex space-x-6">
           {['Home', 'About', 'Services', 'Contact'].map((item) => (
             <motion.div
@@ -38,12 +44,14 @@ const Navbar = () => {
                 style={{ scaleX: hoveredItem === item ? 1 : 0 }}
                 initial={{ scaleX: 0 }}
                 animate={{ scaleX: hoveredItem === item ? 1 : 0 }}
-                transformOrigin="left" 
+                transformOrigin="left"
               />
             </motion.div>
           ))}
         </div>
-        <button className="md:hidden text-white">
+
+        {/* Mobile Menu Button */}
+        <button className="md:hidden text-white" onClick={handleMobileMenuToggle}>
           <svg
             className="w-6 h-6"
             fill="none"
@@ -60,6 +68,22 @@ const Navbar = () => {
           </svg>
         </button>
       </div>
+
+      {/* Mobile Menu */}
+      {isMobileMenuOpen && (
+        <div className="md:hidden bg-black p-6 space-y-4">
+          {['Home', 'About', 'Services', 'Contact'].map((item) => (
+            <Link
+              key={item}
+              href={`/${item.toLowerCase()}`}
+              className="text-white text-lg block"
+              onClick={() => setIsMobileMenuOpen(false)} // close menu on link click
+            >
+              {item}
+            </Link>
+          ))}
+        </div>
+      )}
     </nav>
   );
 };
