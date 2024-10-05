@@ -6,7 +6,21 @@ import { Canvas, useFrame } from "@react-three/fiber";
 import { OrbitControls, Loader, useGLTF } from "@react-three/drei";
 import Navbar from "../Components/Navbar";
 import Image from 'next/image';
-
+// Fixing unescaped single quotes
+const values = [
+  {
+    title: "Rapid Growth",
+    description: "Our application support team is dedicated to assisting you with any inquiries or issues you may encounter. Whether you need help getting started, troubleshooting, or understanding features, we are here to help you make the most of our application.",
+    imgSrc: "/images/projects.png",
+    altText: "Graphic representing Application Support",
+  },
+  {
+    title: "Grow Network",
+    description: "We prioritize your needs and strive to exceed your expectations. Your feedback helps us improve and innovate continuously.",
+    imgSrc: "/images/projects.png",
+    altText: "Graphic representing Customer Satisfaction",
+  },
+];
 // Component for 3D object
 const Model = () => {
   const { scene } = useGLTF("/Models/boat.glb");
