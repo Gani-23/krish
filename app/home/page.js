@@ -5,7 +5,6 @@ import { motion, useAnimation } from "framer-motion";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { OrbitControls, Loader, useGLTF } from "@react-three/drei";
 import Navbar from "../Components/Navbar";
-import Image from "next/image";
 
 // Component for 3D object
 const Model = () => {
@@ -89,7 +88,7 @@ const HomePage = () => {
                 <p>
                   We are a team of passionate individuals who believe in the
                   power of second chances. We are here to help you succeed and
-                  thrive in your career.
+                  thrive in your career.&apos;
                 </p>
               </div>
             </motion.div>
