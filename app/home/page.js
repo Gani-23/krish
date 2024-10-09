@@ -5,19 +5,21 @@ import { motion, useAnimation } from "framer-motion";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { OrbitControls, Loader, useGLTF } from "@react-three/drei";
 import Navbar from "../Components/Navbar";
-import Image from 'next/image';
+import Image from "next/image";
 
 const values = [
   {
     title: "Rapid Growth",
-    description: "Our application support team is dedicated to assisting you with any inquiries or issues you may encounter. Whether you need help getting started, troubleshooting, or understanding features, we are here to help you make the most of our application.",
-    imgSrc: "/images/projects.png",
+    description:
+      "Our application support team is dedicated to assisting you with any inquiries or issues you may encounter. Whether you need help getting started, troubleshooting, or understanding features, we are here to help you make the most of our application.",
+    imgSrc: "/images/Growth.png",
     altText: "Graphic representing Application Support",
   },
   {
-    title: "Grow Network",
-    description: "We prioritize your needs and strive to exceed your expectations. Your feedback helps us improve and innovate continuously.",
-    imgSrc: "/images/projects.png",
+    title: "Network",
+    description:
+      "We prioritize your needs and strive to exceed your expectations. Your feedback helps us improve and innovate continuously.",
+    imgSrc: "/images/DiverseTeam.png",
     altText: "Graphic representing Customer Satisfaction",
   },
 ];
@@ -41,17 +43,22 @@ const HomePage = () => {
   useEffect(() => {
     const handleScroll = () => {
       const scrollY = window.scrollY;
-      const scrollPercent = scrollY / (document.body.scrollHeight - window.innerHeight);
+      const scrollPercent =
+        scrollY / (document.body.scrollHeight - window.innerHeight);
       controlsAnimation.start({ opacity: 1 - scrollPercent });
     };
-
+  
     const throttledScroll = () => {
       requestAnimationFrame(handleScroll);
     };
-
+  
+    // Add the event listener when the component mounts
     window.addEventListener("scroll", throttledScroll);
+  
+    // Remove the event listener when the component unmounts
     return () => window.removeEventListener("scroll", throttledScroll);
   }, [controlsAnimation]);
+  
 
   return (
     <>
@@ -96,9 +103,13 @@ const HomePage = () => {
               transition={{ duration: 1, delay: 1 }}
             >
               <div className="text-center">
-                <h2 className="text-xl sm:text-2xl font-bold mb-4">What is an Opportunity</h2>
+                <h2 className="text-xl sm:text-2xl font-bold mb-4">
+                  What is an Opportunity
+                </h2>
                 <p>
-                  We are a team of passionate individuals who believe in the power of second chances. We are here to help you succeed and thrive in your career's journey.
+                  We are a team of passionate individuals who believe in the
+                  power of second chances. We are here to help you succeed and
+                  thrive in your career's journey.
                 </p>
               </div>
             </motion.div>
@@ -108,55 +119,66 @@ const HomePage = () => {
         </div>
       </div>
 
-      <div className="p-4 sm:p-8">
-        <motion.h1
-          className="relative mx-auto w-full max-w-4xl text-3xl sm:text-4xl font-light mb-4 text-center py-10"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 1 }}
-        >
-          Our Values
-        </motion.h1>
-
-        <div className="flex flex-col md:flex-row w-full">
-          {values.map((value, index) => (
-            <div
-              key={index}
-              className="flex flex-col md:flex-row items-center w-full max-w-4xl mb-6"
-            >
-              <div style={{ position: 'relative', width: '100%', height: '200px', sm: '300px' }}>
-                <Image src={value.imgSrc} alt={value.altText} fill style={{ objectFit: 'cover' }} />
-              </div>
-              <div className="w-full md:w-1/2 pl-0 md:pl-6">
-                <h2 className="text-2xl sm:text-3xl font-bold mb-2">{value.title}</h2>
-                <p>{value.description}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-
-        <div className="flex justify-center items-center w-full mt-10">
-          <motion.div
-            className="w-full max-w-2xl text-center"
-            initial={{ y: 10, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.5, delay: 0.4 }}
-          >
-            <div style={{ position: 'relative', width: '100%', height: '200px', sm: '300px' }}>
-              <Image
-                src="/images/marketer.png"
-                alt="Team Work"
-                fill
-                style={{ objectFit: 'cover' }}
-              />
-            </div>
-            <h2 className="text-xl sm:text-2xl font-bold mt-4">Be in Trend</h2>
-            <p>
-              Collaboration is key to our success. Our dedicated team works together to deliver exceptional results and ensure your satisfaction.
-            </p>
-          </motion.div>
-        </div>
+<section className="p-4 sm:p-8 bg-white text-black">
+  <motion.h1
+    className="text-2xl sm:text-3xl md:text-4xl font-light mb-10 text-center"
+    initial={{ opacity: 0 }}
+    animate={{ opacity: 1 }}
+    transition={{ duration: 1, delay: 1 }}
+  >
+    Our Values
+  </motion.h1>
+  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+  {values.map((value, index) => (
+    <motion.div
+      key={index}
+      className="flex flex-col items-center bg-white rounded-lg p-12 shadow-lg transition-transform duration-300 hover:scale-105"
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, delay: index * 0.2 }}
+      style={{ minHeight: '500px' }} // Increase card size
+    >
+      <div className="relative w-full h-80 mb-6 rounded-lg overflow-hidden"> 
+        <Image
+          src={value.imgSrc}
+          alt={value.altText}
+          fill
+          style={{ objectFit: 'cover' }} // Keep object fit as 'cover' for proper cropping
+          className="max-h-full max-w-full"
+        />
       </div>
+      <h2 className="text-xl sm:text-2xl font-bold mb-2 text-center">{value.title}</h2>
+      <p className="text-sm sm:text-base text-center">{value.description}</p>
+    </motion.div>
+  ))}
+</div>
+
+
+  {/* Team Work Section */}
+  <div className="flex justify-center items-center w-full mt-10">
+    <motion.div
+      className="w-full max-w-2xl text-center bg-white rounded-lg p-6 shadow-lg transition-transform duration-300 hover:scale-105"
+      initial={{ y: 10, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.5, delay: 0.4 }}
+    >
+      <div className="relative w-full h-60 mb-4 rounded-lg overflow-hidden">
+        <Image
+          src="/images/Trend.png"
+          alt="Team Work"
+          fill
+          style={{ objectFit: 'cover' }}
+          className="max-h-full max-w-full"
+        />
+      </div>
+      <h2 className="text-lg sm:text-xl md:text-2xl font-bold mt-4 text-black">Be in Trend</h2>
+      <p className="text-sm sm:text-base text-black">
+        We are always on the lookout for the latest trends and technologies to help you stay ahead of the curve.
+      </p>
+    </motion.div>
+  </div>
+</section>
+
     </>
   );
 };

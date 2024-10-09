@@ -9,20 +9,10 @@ import Navbar from '../Components/Navbar';
 const ContactUs = () => {
   return (
     <section className="relative bg-black text-white overflow-hidden">
-      {/* Background Decoration
-      <div className="absolute inset-0">
-        <Image
-          src="/images/contact-bg.jpg" // Replace with your background image path
-          alt="Contact Background"
-          layout="fill"
-          objectFit="cover"
-          quality={100}
-          className="opacity-50"
-        />
-      </div> */}
+
       <Navbar />
 
-      <div className="relative z-10 container mx-auto px-6 py-20 flex flex-col items-center">
+      <div className="relative z-10 container mx-auto px-4 py-25 flex flex-col items-center">
         {/* Hero Section */}
         <motion.div
           className="text-center mb-12"

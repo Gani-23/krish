@@ -29,19 +29,7 @@ const About = () => {
               </span>
             </Link>
           </motion.div>   
-          < div>
-       <motion.p
-        initial={{ opacity: 0, y: -10 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, delay: 0.5 }}
-        className="mt-6 cursor-pointer flex items-center"
-        onClick={() =>
-          window.scrollTo({ top: window.innerHeight, behavior: "smooth" })
-        }
-        aria-label="Scroll Down"
-        >
-          Scroll Down
-        </motion.p></div>
+          
         </div>
       </section>
 
