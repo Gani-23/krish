@@ -83,7 +83,7 @@ const About = () => {
           >
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Our Values</h2>
             <p className="text-lg mb-6">
-              Integrity, Innovation, and Excellence are the core values that drive us to deliver exceptional results.
+                We believe in the power of second chances and the importance of continuous learning and growth. Our values drive us to provide the best opportunities for our community.
             </p>
             <Link href="/">
               <span className="inline-block px-6 py-3 text-lg font-semibold bg-blue-600 text-white rounded-lg shadow-lg hover:bg-blue-700 transition duration-300 cursor-pointer">
@@ -103,21 +103,20 @@ const teamMembers = [
     id: 1,
     name: 'Saiganesh Angadi',
     position: 'CEO',
-    image: '/images/founders/gani.png', // Replace with actual image path
-    delay: 0.1
+    image: '/images/founders/gani.png', 
   },
   {
     id: 2,
     name: 'Karegowdra Gopi Krishna',
     position: 'CTO',
-    image: '/images/bob.jpg', // Replace with actual image path
+    image: '/images/bob.jpg', 
     delay: 0.2
   },
   {
     id: 3,
     name: 'Sunil Naik',
     position: 'CFO',
-    image: '/images/founders/sunil.png', // Replace with actual image path
+    image: '/images/founders/sunil.png', 
     delay: 0.3
   }
 ];
