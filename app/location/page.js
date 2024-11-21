@@ -1,15 +1,17 @@
 // components/Location.jsx
-'use client';
-import { motion } from 'framer-motion';
-import { useEffect } from 'react';
-import Navbar from '../Components/Navbar';
+"use client";
+import { motion } from "framer-motion";
+import { useEffect } from "react";
+import Navbar from "../Components/Navbar";
 
 const Location = () => {
+  const API_KEY = process.env.API_KEY; // Retrieve API key from environment
+
   useEffect(() => {
     // Load Google Maps script
     const loadMap = () => {
-      const script = document.createElement('script');
-      script.src = `https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap`;
+      const script = document.createElement("script");
+      script.src = `https://maps.googleapis.com/maps/api/js?key=${API_KEY}&callback=initMap`; // Use the environment variable
       script.async = true;
       script.defer = true;
       document.head.appendChild(script);
@@ -19,23 +21,25 @@ const Location = () => {
     window.initMap = initMap; // Make the initMap function available globally
 
     return () => {
-      const script = document.querySelector('script[src*="maps.googleapis.com"]');
+      const script = document.querySelector(
+        'script[src*="maps.googleapis.com"]'
+      );
       if (script) script.remove(); // Cleanup the script on component unmount
     };
   }, []);
 
   const initMap = () => {
-    const map = new window.google.maps.Map(document.getElementById('map'), {
-      center: { lat: 14.7000, lng: 76.8667 }, // Converted coordinates
+    const map = new window.google.maps.Map(document.getElementById("map"), {
+      center: { lat: 14.7, lng: 76.8667 }, // Converted coordinates
       zoom: 15,
-      mapTypeId: 'roadmap',
+      mapTypeId: "roadmap",
     });
 
     // Add a marker at your location
     new window.google.maps.Marker({
-      position: { lat: 14.7000, lng: 76.8667 }, // Converted coordinates
+      position: { lat: 14.7, lng: 76.8667 }, // Converted coordinates
       map: map,
-      title: 'Your Location',
+      title: "Your Location",
     });
   };
 
@@ -50,13 +54,18 @@ const Location = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, ease: "easeInOut" }}
         >
-          <h1 className="text-4xl md:text-5xl font-extrabold mb-6">Our Location</h1>
+          <h1 className="text-4xl md:text-5xl font-extrabold mb-6">
+            Our Location
+          </h1>
           <p className="text-lg md:text-xl max-w-2xl mx-auto">
             Find us at the location below. We look forward to seeing you!
           </p>
         </motion.div>
 
-        <div id="map" className="w-full max-w-3xl h-96 rounded-lg shadow-lg"></div>
+        <div
+          id="map"
+          className="w-full max-w-3xl h-96 rounded-lg shadow-lg"
+        ></div>
       </div>
     </section>
   );
