@@ -2,7 +2,6 @@
 import Navbar from './Components/Navbar';
 import { motion } from 'framer-motion';
 import Head from 'next/head'; // For additional styles if needed
-import HomeContent from './Components/HomeContent';
 import HomePage from './Components/HomePage';
 const Home = () => {
   return (
