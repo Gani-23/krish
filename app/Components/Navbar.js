@@ -33,7 +33,7 @@ const Navbar = () => {
 
         {/* Desktop Menu */}
         <div className="hidden md:flex space-x-6">
-          {['Home', 'About', 'Services', 'Contact'].map((item) => (
+          {['About', 'Services', 'Contact'].map((item) => (
             <motion.div
               key={item}
               className="relative group"
@@ -78,7 +78,7 @@ const Navbar = () => {
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
         <div className="md:hidden bg-black p-6 space-y-4">
-          {['Home', 'About', 'Services', 'Contact'].map((item) => (
+          {[ 'About', 'Services', 'Contact'].map((item) => (
             <Link
               key={item}
               href={`/${item.toLowerCase()}`}
