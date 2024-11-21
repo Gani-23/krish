@@ -83,7 +83,7 @@ const About = () => {
               <Canvas className="w-full h-full">
                 <ambientLight intensity={0.5} />
                 <pointLight position={[10, 10, 10]} intensity={1.5} />
-                <PerspectiveCamera position={[-5, 5, 5]} fov={30} makeDefault />
+                <PerspectiveCamera position={[-5, 5, 5]} fov={25} makeDefault />
                 <OrbitControls />
                 <CyberpunkModel />
               </Canvas>
