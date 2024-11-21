@@ -1,15 +1,32 @@
 'use client';
 import { motion } from 'framer-motion';
-import Image from 'next/image'; // For optimized image handling
 import Link from 'next/link';
-import React from 'react';
+import React, { Suspense, useMemo } from 'react';
 import Navbar from '../Components/Navbar';
-import { Canvas } from '@react-three/fiber'; // For 3D rendering
-import { OrbitControls, PerspectiveCamera, useGLTF } from '@react-three/drei'; // Additional helpers
+import { Canvas } from '@react-three/fiber';
+import { OrbitControls, PerspectiveCamera, useGLTF } from '@react-three/drei';
+
+// Create a memoized 3D model component within the file
+const CyberpunkModel = React.memo(() => {
+  const { scene } = useGLTF("/Models/cyberpunk.glb");
+
+  React.useEffect(() => {
+    if (scene) {
+      scene.scale.set(0.5, 0.5, 0.5); // Scale the model if needed
+    }
+  }, [scene]);
+
+  return <primitive object={scene} />;
+});
+
+// Ensure the display name is set for better debugging
+CyberpunkModel.displayName = 'CyberpunkModel';
 
 const About = () => {
-  const { scene } = useGLTF('/Models/cyberpunk.glb'); // Reference to the GLB model file
-  const cameraRef = React.useRef(null); // To reference the camera
+  // Preload the model to avoid any potential loading issues
+  useMemo(() => {
+    useGLTF.preload("/Models/cyberpunk.glb");
+  }, []);
 
   return (
     <>
@@ -62,16 +79,15 @@ const About = () => {
         <div className="flex flex-col-reverse md:flex-row items-center justify-between space-y-6 md:space-y-0">
           {/* 3D Asset on the left */}
           <div className="w-full md:w-1/2 h-80 md:h-[500px]">
-            <Canvas className="w-full h-full">
-              {/* Set camera perspective */}
-              <ambientLight intensity={0.5} />
-              <pointLight position={[10, 10, 10]} />
-              
-              {/* Make sure the camera is referenced */}
-              <PerspectiveCamera ref={cameraRef} position={[-5, 5, 5]} fov={30} makeDefault />
-              <OrbitControls /> {/* Allow user to rotate the model */}
-              <primitive object={scene} /> {/* This is how you render the scene */}
-            </Canvas>
+            <Suspense fallback={<div className="w-full h-full flex items-center justify-center text-white">Loading 3D Model...</div>}>
+              <Canvas className="w-full h-full">
+                <ambientLight intensity={0.5} />
+                <pointLight position={[10, 10, 10]} intensity={1.5} />
+                <PerspectiveCamera position={[-5, 5, 5]} fov={30} makeDefault />
+                <OrbitControls />
+                <CyberpunkModel />
+              </Canvas>
+            </Suspense>
           </div>
 
           {/* Text content on the right */}
@@ -88,68 +104,6 @@ const About = () => {
               </span>
             </Link>
           </div>
-        </div>
-      </section>
-
-      {/* Founder Section */}
-      <section className="bg-black py-16 px-6 text-white">
-        <div className="container mx-auto text-center">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1, ease: "easeInOut" }}
-            className="max-w-2xl mx-auto mb-12"
-          >
-            <h2 className="text-3xl md:text-4xl font-extrabold text-white mb-4">
-              Our Founder
-            </h2>
-            <p className="text-lg mb-6">
-              Meet the visionary behind our platform, driving us towards excellence and success.
-            </p>
-          </motion.div>
-
-          <motion.div
-            className="flex justify-center"
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            <div className="bg-white p-6 rounded-lg shadow-lg text-center max-w-sm">
-              <Image
-                src="/images/founders/gani.png"
-                alt="Saiganesh Angadi"
-                width={200}
-                height={200}
-                className="rounded-full mx-auto mb-4"
-              />
-              <h3 className="text-2xl font-semibold mb-2 text-black">Saiganesh Angadi</h3>
-              <p className="text-gray-700">Founder & CEO</p>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Our Values Section */}
-      <section className="bg-black py-16 px-6 text-white">
-        <div className="container mx-auto text-center">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1, ease: "easeInOut" }}
-            className="max-w-2xl mx-auto mb-12"
-          >
-            <h2 className="text-3xl md:text-4xl font-extrabold text-white mb-4">
-              Our Values
-            </h2>
-            <p className="text-lg mb-6">
-              We believe in the power of second chances, continuous learning, and fostering growth. Our values inspire us to build a better future for our community.
-            </p>
-            <Link href="/">
-              <span className="inline-block px-6 py-3 text-lg font-semibold bg-white text-black rounded-lg shadow-lg hover:bg-gray-200 transition duration-300 cursor-pointer">
-                Discover More
-              </span>
-            </Link>
-          </motion.div>
         </div>
       </section>
     </>

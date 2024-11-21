@@ -5,13 +5,13 @@ import { useEffect } from "react";
 import Navbar from "../Components/Navbar";
 
 const Location = () => {
-  const API_KEY = process.env.API_KEY; // Retrieve API key from environment
+   // Retrieve API key from environment
 
   useEffect(() => {
     // Load Google Maps script
     const loadMap = () => {
       const script = document.createElement("script");
-      script.src = `https://maps.googleapis.com/maps/api/js?key=${API_KEY}&callback=initMap`; // Use the environment variable
+      script.src = `https://maps.googleapis.com/maps/api/js?key=&callback=initMap`; // Use the environment variable
       script.async = true;
       script.defer = true;
       document.head.appendChild(script);
